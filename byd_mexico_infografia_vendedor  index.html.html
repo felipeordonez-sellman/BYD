@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BYD México — Guía del Vendedor 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --byd-blue:#1C69D4;--byd-blue-dk:#0F4AA3;
+  --byd-dark:#0A0A0A;
+  --card-bg:#ffffff;--bg:#f4f6fb;
+  --text-primary:#111;--text-secondary:#666;
+  --border:rgba(0,0,0,0.1);
+  --bg-secondary:#edf1f8;
+  --bg-info:#ddeafb;--text-info:#1553A0;
+  --bg-success:#eaf3de;--text-success:#3B6D11;
+}
+@media(prefers-color-scheme:dark){:root{
+  --card-bg:#1c1c1e;--bg:#0a0a0a;
+  --text-primary:#f0f0f0;--text-secondary:#999;
+  --border:rgba(255,255,255,0.1);
+  --bg-secondary:#2c2c2e;
+  --bg-info:#0c3068;--text-info:#7eaeee;
+  --bg-success:#27500a;--text-success:#c0dd97;
+}}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text-primary);max-width:760px;margin:0 auto}
+.wrap{padding:0 0 2rem}
+.hero{background:var(--byd-dark);color:#fff;padding:1.5rem 1.25rem 1rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-40px;top:-40px;width:220px;height:220px;border-radius:50%;background:rgba(28,105,212,0.18)}
+.hero::after{content:'';position:absolute;right:30px;bottom:-70px;width:160px;height:160px;border-radius:50%;background:rgba(28,105,212,0.1)}
+.hero-badge{display:inline-block;background:var(--byd-blue);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;padding:3px 12px;border-radius:2px;margin-bottom:8px;text-transform:uppercase}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:4px}
+.hero h1 span{color:var(--byd-blue)}
+.hero p{font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:1rem}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.hstat{text-align:center;background:rgba(255,255,255,0.07);border-radius:6px;padding:8px 4px}
+.hstat-n{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#fff}
+.hstat-n span{color:var(--byd-blue)}
+.hstat-l{font-size:9px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.5px}
+.section{padding:1rem 1.25rem}
+.sec-title{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:var(--text-secondary);letter-spacing:2px;text-transform:uppercase;margin-bottom:0.75rem;display:flex;align-items:center;gap:8px}
+.sec-title::before{content:'';display:block;width:18px;height:2px;background:var(--byd-blue);flex-shrink:0}
+.tabs{display:flex;gap:4px;margin-bottom:1rem;flex-wrap:wrap}
+.tab{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;padding:5px 12px;border-radius:4px;border:0.5px solid var(--border);background:var(--bg-secondary);color:var(--text-secondary);cursor:pointer;transition:all 0.15s;letter-spacing:0.5px;text-transform:uppercase}
+.tab.active{background:var(--byd-blue);color:#fff;border-color:var(--byd-blue)}
+.models-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:7px}
+.model-card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:10px;padding:10px;cursor:pointer;transition:all 0.15s}
+.model-card:hover{border-color:var(--byd-blue)}
+.model-card.selected{border-color:var(--byd-blue);border-width:1.5px}
+.mc-type{font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;padding:2px 6px;border-radius:2px;display:inline-block}
+.mc-type.ev{background:#ddeafb;color:#1553A0}
+.mc-type.phev{background:#EAF3DE;color:#3B6D11}
+.mc-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--text-primary);line-height:1.1;margin-bottom:2px}
+.mc-sub{font-size:10px;color:var(--text-secondary);margin-bottom:6px}
+.mc-price{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:var(--byd-blue)}
+.mc-price span{font-size:9px;font-weight:400;color:var(--text-secondary)}
+.detail-panel{background:var(--bg-secondary);border-radius:10px;padding:1rem;margin-top:0.75rem;display:none}
+.detail-panel.show{display:block}
+.dp-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem}
+.dp-title{font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:800;color:var(--text-primary)}
+.dp-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:0.75rem}
+.dp-item{background:var(--card-bg);border-radius:6px;padding:7px 10px}
+.dp-item-l{font-size:9px;color:var(--text-secondary);margin-bottom:2px;text-transform:uppercase;letter-spacing:0.5px}
+.dp-item-v{font-size:13px;font-weight:500;color:var(--text-primary)}
+.dp-pitch{background:var(--card-bg);border-left:2px solid var(--byd-blue);padding:8px 10px;border-radius:0 6px 6px 0;font-size:12px;color:var(--text-primary);line-height:1.5}
+.pill{display:inline-block;font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600}
+.pill-ev{background:#ddeafb;color:#1553A0}
+.pill-phev{background:#EAF3DE;color:#3B6D11}
+.pill-hev{background:#FAEEDA;color:#854F0B}
+.comp-table{width:100%;border-collapse:collapse;font-size:11.5px}
+.comp-table th{background:var(--byd-dark);color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:10px;letter-spacing:0.5px;text-transform:uppercase;padding:7px 8px;text-align:left}
+.comp-table th:first-child{border-radius:6px 0 0 0}
+.comp-table th:last-child{border-radius:0 6px 0 0}
+.comp-table td{padding:6px 8px;border-bottom:0.5px solid var(--border);color:var(--text-primary)}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table tr:nth-child(even) td{background:var(--bg-secondary)}
+.comp-table .byd-row td{background:rgba(28,105,212,0.07);color:var(--text-primary)}
+.comp-table .byd-row td:first-child{border-left:2px solid var(--byd-blue)}
+.byd-label{background:var(--byd-blue);color:#fff;font-size:9px;font-weight:700;padding:1px 4px;border-radius:2px;margin-left:4px;vertical-align:middle}
+.win{color:var(--text-success);font-weight:600}
+.bar-wrap{margin-bottom:6px}
+.bar-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:2px}
+.bar-label span:first-child{color:var(--text-secondary)}
+.bar-label span:last-child{font-weight:500;color:var(--text-primary)}
+.bar-bg{background:var(--bg-secondary);border-radius:2px;height:6px;overflow:hidden}
+.bar-fill{height:100%;border-radius:2px}
+.tech-grid{display:grid;gap:8px}
+.tech-block{background:var(--card-bg);border:0.5px solid var(--border);border-radius:10px;overflow:hidden}
+.tech-header{background:var(--byd-dark);padding:10px 14px;display:flex;align-items:center;gap:10px;cursor:pointer}
+.tech-tag{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 7px;border-radius:2px;flex-shrink:0}
+.tech-tag.blue{background:var(--byd-blue);color:#fff}
+.tech-tag.green{background:#3B6D11;color:#fff}
+.tech-tag.teal{background:#0F6E56;color:#fff}
+.tech-tag.gold{background:#854F0B;color:#fff}
+.tech-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:#fff;flex:1}
+.tech-arrow{font-size:11px;color:rgba(255,255,255,0.5);transition:transform 0.2s}
+.tech-block.open .tech-arrow{transform:rotate(180deg)}
+.tech-body{display:none;padding:12px 14px}
+.tech-block.open .tech-body{display:block}
+.tech-tagline{font-size:12px;font-weight:600;color:var(--byd-blue);margin-bottom:8px}
+.tech-desc{font-size:12px;color:var(--text-primary);line-height:1.65;margin-bottom:10px}
+.tech-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.tech-pill{font-size:10px;font-weight:600;padding:3px 9px;border-radius:10px;background:var(--bg-secondary);color:var(--text-secondary);border:0.5px solid var(--border)}
+.tech-pill.hi{background:var(--bg-success);color:var(--text-success);border-color:transparent}
+.tech-pill.info{background:var(--bg-info);color:var(--text-info);border-color:transparent}
+.tech-modes{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
+.tech-mode{background:var(--bg-secondary);border-radius:6px;padding:8px 10px}
+.tech-mode-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--byd-blue);margin-bottom:3px}
+.tech-mode-text{font-size:11px;color:var(--text-primary);line-height:1.5}
+.tech-vs{background:var(--bg-secondary);border-radius:6px;padding:8px 10px;font-size:11px;color:var(--text-primary);line-height:1.6;border-left:2px solid var(--byd-blue)}
+.tech-vs strong{color:var(--byd-blue);font-weight:600}
+.obj-grid{display:grid;gap:7px}
+.obj-card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:10px;padding:11px;cursor:pointer}
+.obj-card.open .obj-body{display:block}
+.obj-q{display:flex;align-items:flex-start;gap:8px}
+.obj-icon{width:22px;height:22px;border-radius:50%;background:rgba(28,105,212,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:var(--byd-blue);font-weight:700}
+.obj-qt{font-size:13px;font-weight:500;color:var(--text-primary);flex:1;line-height:1.4}
+.obj-arrow{font-size:11px;color:var(--text-secondary);flex-shrink:0;transition:transform 0.2s}
+.obj-card.open .obj-arrow{transform:rotate(180deg)}
+.obj-body{display:none;margin-top:10px;padding-top:10px;border-top:0.5px solid var(--border)}
+.obj-ans{font-size:12px;color:var(--text-primary);line-height:1.6;margin-bottom:6px}
+.obj-ans strong{color:var(--byd-blue);font-weight:600}
+.obj-tip{font-size:11px;background:var(--bg-info);color:var(--text-info);padding:6px 8px;border-radius:4px;margin-top:6px}
+.benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.ben-card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:10px;padding:10px}
+.ben-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:3px}
+.ben-text{font-size:11px;color:var(--text-secondary);line-height:1.5}
+.footer-note{text-align:center;font-size:10px;color:var(--text-secondary);padding:0.5rem 1.25rem;border-top:0.5px solid var(--border);margin-top:0.5rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <div class="hero-badge">Guía del Vendedor 2026</div>
+  <h1>Gama <span>BYD</span> México<br>+ Comparativa Competencia</h1>
+  <p>Datos 100% de fichas técnicas oficiales byd.com/mx · Prohibido usar información no verificada</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-n">13<span>+</span></div><div class="hstat-l">Modelos</div></div>
+    <div class="hstat"><div class="hstat-n">$359<span>k</span></div><div class="hstat-l">Desde</div></div>
+    <div class="hstat"><div class="hstat-n">8<span>A</span></div><div class="hstat-l">Garan. bat.</div></div>
+    <div class="hstat"><div class="hstat-n">#1</div><div class="hstat-l">Mundial EV</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-title">Gama completa BYD México · Fichas oficiales 2025–2026</div>
+  <div class="tabs">
+    <div class="tab active" onclick="filterModels('all',this)">Todos</div>
+    <div class="tab" onclick="filterModels('ev',this)">Eléctricos</div>
+    <div class="tab" onclick="filterModels('phev',this)">Híbridos PHEV</div>
+  </div>
+  <div class="models-grid" id="modelsGrid">
+    <div class="model-card" data-type="ev" onclick="showDetail('dolphin-mini',this)"><div class="mc-type ev">100% EV</div><div class="mc-name">Dolphin Mini</div><div class="mc-sub">Hatchback · 5 asientos</div><div class="mc-price">$358,800 <span>MXN</span></div></div>
+    <div class="model-card" data-type="ev" onclick="showDetail('dolphin',this)"><div class="mc-type ev">100% EV</div><div class="mc-name">Dolphin GS</div><div class="mc-sub">Hatchback · 5 asientos</div><div class="mc-price">$535,990 <span>MXN</span></div></div>
+    <div class="model-card" data-type="phev" onclick="showDetail('king',this)"><div class="mc-type phev">PHEV</div><div class="mc-name">King DM-i</div><div class="mc-sub">Sedán · 5 asientos</div><div class="mc-price">$499,800 <span>MXN</span></div></div>
+    <div class="model-card" data-type="ev" onclick="showDetail('yuan-pro',this)"><div class="mc-type ev">100% EV</div><div class="mc-name">Yuan Pro EV</div><div class="mc-sub">SUV · 5 asientos</div><div class="mc-price">$579,800 <span>MXN</span></div></div>
+    <div class="model-card" data-type="phev" onclick="showDetail('yuan-pro-dmi',this)"><div class="mc-type phev">PHEV</div><div class="mc-name">Yuan Pro DM-i</div><div class="mc-sub">SUV · 5 asientos · NUEVO</div><div class="mc-price">~$499,999 <span>MXN</span></div></div>
+    <div class="model-card" data-type="phev" onclick="showDetail('song-pro',this)"><div class="mc-type phev">PHEV</div><div class="mc-name">Song Pro DM-i</div><div class="mc-sub">SUV · 5 asientos</div><div class="mc-price">$599,880 <span>MXN</span></div></div>
+    <div class="model-card" data-type="ev" onclick="showDetail('yuan-plus',this)"><div class="mc-type ev">100% EV</div><div class="mc-name">Yuan Plus EV</div><div class="mc-sub">SUV · 5 asientos</div><div class="mc-price">$649,800 <span>MXN</span></div></div>
+    <div class="model-card" data-type="phev" onclick="showDetail('song-plus',this)"><div class="mc-type phev">PHEV</div><div class="mc-name">Song Plus DM-i</div><div class="mc-sub">SUV · 5 asientos</div><div class="mc-price">$778,800 <span>MXN</span></div></div>
+    <div class="model-card" data-type="ev" onclick="showDetail('seal',this)"><div class="mc-type ev">100% EV</div><div class="mc-name">Seal EV</div><div class="mc-sub">Sedán deportivo · 5 asientos</div><div class="mc-price">$799,800 <span>MXN</span></div></div>
+    <div class="model-card" data-type="ev" onclick="showDetail('sealion7',this)"><div class="mc-type ev">100% EV</div><div class="mc-name">Sealion 7 EV</div><div class="mc-sub">SUV · 5 asientos</div><div class="mc-price">$849,800 <span>MXN</span></div></div>
+    <div class="model-card" data-type="phev" onclick="showDetail('shark',this)"><div class="mc-type phev">PHEV</div><div class="mc-name">Shark</div><div class="mc-sub">Pick-up · 5 asientos</div><div class="mc-price">$1,099,800 <span>MXN</span></div></div>
+    <div class="model-card" data-type="phev" onclick="showDetail('atto8',this)"><div class="mc-type phev">PHEV</div><div class="mc-name">Atto 8 DM-p</div><div class="mc-sub">SUV 7 plazas · 3 filas</div><div class="mc-price">Consultar <span>dist.</span></div></div>
+    <div class="model-card" data-type="phev" onclick="showDetail('m9',this)"><div class="mc-type phev">PHEV</div><div class="mc-name">M9</div><div class="mc-sub">Minivan 7 plazas · 3 filas</div><div class="mc-price">Consultar <span>dist.</span></div></div>
+  </div>
+  <div class="detail-panel" id="detailPanel">
+    <div class="dp-header">
+      <div><div class="dp-title" id="dp-name">—</div><div style="font-size:12px;color:var(--text-secondary)" id="dp-sub">—</div></div>
+      <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:800;color:var(--byd-blue)" id="dp-price">—</div><div class="pill" id="dp-badge">—</div></div>
+    </div>
+    <div class="dp-grid" id="dp-specs"></div>
+    <div class="dp-pitch" id="dp-pitch"></div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="sec-title">Comparativa vs. competencia</div>
+  <div class="tabs">
+    <div class="tab active" onclick="showComp('phev',this)">Híbridos PHEV</div>
+    <div class="tab" onclick="showComp('ev',this)">Eléctricos puros</div>
+    <div class="tab" onclick="showComp('hev',this)">Híbridos HEV</div>
+  </div>
+  <div id="comp-phev">
+    <table class="comp-table">
+      <thead><tr><th>Modelo</th><th>Tipo</th><th>Precio desde</th><th>Auto. EV</th><th>Consumo híb.</th><th>Potencia</th></tr></thead>
+      <tbody>
+        <tr class="byd-row"><td>BYD Yuan Pro DM-i <span class="byd-label">BYD</span></td><td><span class="pill pill-phev">PHEV</span></td><td class="win">~$500k</td><td>45 km NEDC</td><td class="win">24 km/L</td><td>~217 hp</td></tr>
+        <tr class="byd-row"><td>BYD King DM-i <span class="byd-label">BYD</span></td><td><span class="pill pill-phev">PHEV</span></td><td class="win">$499,800</td><td class="win">50 km NEDC</td><td class="win">25.6 km/L</td><td>~258 hp</td></tr>
+        <tr class="byd-row"><td>BYD Song Pro DM-i <span class="byd-label">BYD</span></td><td><span class="pill pill-phev">PHEV</span></td><td>$599,880</td><td class="win">71 km NEDC</td><td class="win">22.7 km/L</td><td>220 hp</td></tr>
+        <tr class="byd-row"><td>BYD Song Plus DM-i <span class="byd-label">BYD</span></td><td><span class="pill pill-phev">PHEV</span></td><td>$778,800</td><td class="win">105 km NEDC</td><td class="win">19.6 km/L</td><td>236 hp</td></tr>
+        <tr class="byd-row"><td>BYD Shark <span class="byd-label">BYD</span></td><td><span class="pill pill-phev">PHEV</span></td><td>$1,099,800</td><td class="win">100 km NEDC</td><td>7.5 L/100km</td><td>430 hp est.</td></tr>
+        <tr><td>MG eHS</td><td><span class="pill pill-phev">PHEV</span></td><td>$619,900</td><td>52 km</td><td>—</td><td>281 hp</td></tr>
+        <tr><td>CUPRA Formentor PHEV</td><td><span class="pill pill-phev">PHEV</span></td><td>$850,900</td><td>45 km</td><td>—</td><td>245 hp</td></tr>
+        <tr><td>Ford Escape Híbrida</td><td><span class="pill pill-phev">PHEV</span></td><td>$799,000</td><td>48 km</td><td>—</td><td>163 hp</td></tr>
+        <tr><td>Mitsubishi Outlander PHEV</td><td><span class="pill pill-phev">PHEV</span></td><td>$827,900</td><td>55 km</td><td>—</td><td>131 hp</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="comp-ev" style="display:none">
+    <table class="comp-table">
+      <thead><tr><th>Modelo</th><th>Precio desde</th><th>Autonomía oficial</th><th>Potencia</th><th>Carga rápida DC</th></tr></thead>
+      <tbody>
+        <tr class="byd-row"><td>BYD Dolphin Mini <span class="byd-label">BYD</span></td><td class="win">$358,800</td><td>300 / 380 km NEDC</td><td>74 hp</td><td>30 / 40 kW</td></tr>
+        <tr class="byd-row"><td>BYD Dolphin GS <span class="byd-label">BYD</span></td><td>$535,990</td><td>405 km NEDC</td><td>~94 hp</td><td>60 kW</td></tr>
+        <tr class="byd-row"><td>BYD Yuan Pro EV <span class="byd-label">BYD</span></td><td>$579,800</td><td>380 km NEDC</td><td>~175 hp</td><td>65 kW</td></tr>
+        <tr class="byd-row"><td>BYD Yuan Plus EV <span class="byd-label">BYD</span></td><td>$649,800</td><td class="win">480 km NEDC</td><td class="win">201 hp</td><td>88 kW</td></tr>
+        <tr class="byd-row"><td>BYD Seal RWD / AWD <span class="byd-label">BYD</span></td><td>$799,800</td><td class="win">460 / 520 km WLTC</td><td class="win">201 / 530 hp</td><td class="win">110 / 150 kW</td></tr>
+        <tr class="byd-row"><td>BYD Sealion 7 AWD <span class="byd-label">BYD</span></td><td>$849,800</td><td>456 km WLTC</td><td class="win">~522 hp</td><td class="win">150 kW</td></tr>
+        <tr><td>MG ZS EV</td><td>$539,900</td><td>350 km</td><td>174 hp</td><td>50 kW</td></tr>
+        <tr><td>Tesla Model 3</td><td>~$1,200,000</td><td>566 km WLTP</td><td>283 hp</td><td class="win">170 kW</td></tr>
+        <tr><td>Nissan Leaf</td><td>~$650,000</td><td>226 km WLTP</td><td>147 hp</td><td>50 kW</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="comp-hev" style="display:none">
+    <table class="comp-table">
+      <thead><tr><th>Modelo</th><th>Precio desde</th><th>Rendimiento</th><th>Potencia</th><th>¿Enchufable?</th></tr></thead>
+      <tbody>
+        <tr class="byd-row"><td>BYD King DM-i <span class="byd-label">BYD</span></td><td class="win">$499,800</td><td class="win">25.6 km/L NEDC</td><td class="win">~258 hp</td><td class="win">Sí · 50 km EV</td></tr>
+        <tr class="byd-row"><td>BYD Yuan Pro DM-i <span class="byd-label">BYD</span></td><td class="win">~$500k</td><td class="win">24 km/L NEDC</td><td>~217 hp</td><td class="win">Sí · 45 km EV</td></tr>
+        <tr><td>Toyota Prius HEV Base</td><td>$501,400</td><td class="win">24.2 km/L</td><td>121 hp</td><td>NO enchufable</td></tr>
+        <tr><td>Toyota Corolla HEV</td><td>$504,700</td><td>22 km/L</td><td>138 hp</td><td>NO enchufable</td></tr>
+        <tr><td>GWM Jolion HEV</td><td>$514,900</td><td>20 km/L</td><td>188 hp</td><td>NO enchufable</td></tr>
+        <tr><td>Nissan Kicks E-Power</td><td>$593,900</td><td>23.3 km/L</td><td>134 hp</td><td>NO enchufable</td></tr>
+        <tr><td>Toyota Camry HEV</td><td>$612,900</td><td>20 km/L</td><td>208 hp</td><td>NO enchufable</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="font-size:10px;color:var(--text-secondary);margin-top:6px">* Precios de entrada. Los PHEV BYD pueden recargarse como EV — los HEV de competencia NO. Autonomías según ciclo declarado por cada marca. Datos 2025–2026.</div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="sec-title">Ahorro estimado vs. gasolina</div>
+  <div style="background:var(--card-bg);border:0.5px solid var(--border);border-radius:10px;padding:1rem">
+    <div style="font-size:12px;color:var(--text-secondary);margin-bottom:10px">Costo mensual aprox. · 1,500 km/mes · Gasolina $25/L</div>
+    <div class="bar-wrap"><div class="bar-label"><span>Auto gasolina típico (12 km/L)</span><span>$3,125/mes</span></div><div class="bar-bg"><div class="bar-fill" style="width:100%;background:#E24B4A"></div></div></div>
+    <div class="bar-wrap"><div class="bar-label"><span>Híbrido HEV (22 km/L)</span><span>$1,705/mes</span></div><div class="bar-bg"><div class="bar-fill" style="width:55%;background:#EF9F27"></div></div></div>
+    <div class="bar-wrap"><div class="bar-label"><span>BYD PHEV cargado diario</span><span class="win">~$400/mes</span></div><div class="bar-bg"><div class="bar-fill" style="width:13%;background:#1D9E75"></div></div></div>
+    <div class="bar-wrap"><div class="bar-label"><span>BYD 100% EV (CFE nocturno)</span><span class="win">~$225/mes</span></div><div class="bar-bg"><div class="bar-fill" style="width:7%;background:var(--byd-blue)"></div></div></div>
+    <div style="margin-top:10px;padding:8px;background:var(--bg-success);border-radius:6px;font-size:11px;color:var(--text-success);font-weight:500">Ahorro anual con BYD EV vs. gasolina: hasta $34,800 MXN · Recuperación de inversión estimada en 3–5 años</div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="sec-title">Tecnologías exclusivas BYD</div>
+  <div class="tech-grid">
+    <div class="tech-block" onclick="toggleTech(this)">
+      <div class="tech-header"><div class="tech-tag green">PHEV</div><div class="tech-title">DM-i — Dual Mode Intelligent</div><div class="tech-arrow">▼</div></div>
+      <div class="tech-body">
+        <div class="tech-tagline">El híbrido que se conduce como eléctrico, con gasolina de respaldo</div>
+        <div class="tech-desc">DM-i invierte la lógica tradicional: el <strong>motor eléctrico impulsa las ruedas el 80-90% del tiempo</strong>. El motor de gasolina actúa principalmente como generador. Motor "Xiaoyun" 1.5L con <strong>43% de eficiencia térmica</strong> — uno de los mejores del mundo. Sin correas de accesorios: bomba de agua, A/C y aceite son eléctricos independientes, reduciendo pérdidas parasitarias.</div>
+        <div class="tech-modes">
+          <div class="tech-mode"><div class="tech-mode-title">Modo EV</div><div class="tech-mode-text">Solo motor eléctrico. Cero gasolina. Silencioso. Trayectos diarios sin combustible.</div></div>
+          <div class="tech-mode"><div class="tech-mode-title">Modo serie</div><div class="tech-mode-text">Gasolina genera electricidad. Motor eléctrico mueve las ruedas. Batería baja o velocidad media.</div></div>
+          <div class="tech-mode"><div class="tech-mode-title">Modo paralelo</div><div class="tech-mode-text">Gasolina + eléctrico juntos. Solo en aceleraciones fuertes o autopista a alta velocidad.</div></div>
+          <div class="tech-mode"><div class="tech-mode-title">Modo directo</div><div class="tech-mode-text">Gasolina mueve directamente a velocidad crucero alta. Máxima eficiencia en carretera.</div></div>
+        </div>
+        <div class="tech-pills">
+          <div class="tech-pill hi">43% eficiencia térmica</div><div class="tech-pill hi">+1,000 km autonomía total</div>
+          <div class="tech-pill hi">Sin ansiedad de carga</div><div class="tech-pill info">Funciona en cualquier gasolinera</div>
+        </div>
+        <div class="tech-vs"><strong>Argumento de ventas:</strong> "El DM-i no es un híbrido normal — es un eléctrico que nunca se queda sin combustible. De lunes a viernes lo conduce como EV sin gasolina. Fines de semana y carretera, el motor de gasolina lo acompaña silenciosamente. Lo mejor de los dos mundos."</div>
+      </div>
+    </div>
+    <div class="tech-block" onclick="toggleTech(this)">
+      <div class="tech-header"><div class="tech-tag blue">EV + PHEV AWD</div><div class="tech-title">iTAC — Control Inteligente de Adaptación de Torque</div><div class="tech-arrow">▼</div></div>
+      <div class="tech-body">
+        <div class="tech-tagline">El sistema que previene el derrape 50 ms antes de que ocurra</div>
+        <div class="tech-desc">Los sistemas tradicionales (ESP/ABS) <strong>reaccionan después del deslizamiento</strong>, frenando la rueda que patina. iTAC <strong>predice el deslizamiento 50 milisegundos antes</strong> usando sensores de rotación de los motores eléctricos. En lugar de frenar, transfiere torque de forma proactiva, mantiene tracción sin interrumpir el flujo de potencia.</div>
+        <div class="tech-modes">
+          <div class="tech-mode"><div class="tech-mode-title">En nieve/hielo</div><div class="tech-mode-text">Evita patinado al arrancar. Pruebas BYD: 0-60 km/h en nieve, 0.7 seg más rápido que sin iTAC.</div></div>
+          <div class="tech-mode"><div class="tech-mode-title">En mojado</div><div class="tech-mode-text">Detecta pérdida de adherencia en asfalto húmedo antes de que el conductor lo sienta.</div></div>
+          <div class="tech-mode"><div class="tech-mode-title">En curvas</div><div class="tech-mode-text">Distribuye par entre ruedas interiores y exteriores para mayor precisión y estabilidad.</div></div>
+          <div class="tech-mode"><div class="tech-mode-title">En aceleración</div><div class="tech-mode-text">Libera toda la potencia sin perder tracción. Crítico en modelos de 300+ hp AWD.</div></div>
+        </div>
+        <div class="tech-pills">
+          <div class="tech-pill hi">Predictivo, no reactivo</div><div class="tech-pill hi">Respuesta en milisegundos</div>
+          <div class="tech-pill hi">0.7 seg más rápido en nieve</div><div class="tech-pill info">Seal AWD · Sealion 7 · Shark · Atto 8</div>
+        </div>
+        <div class="tech-vs"><strong>Argumento de ventas:</strong> "Toyota y Nissan tienen ESP. BYD tiene iTAC — una categoría superior. Es como comparar ABS de los 90s con el ESP moderno. En lluvia en el Periférico o carretera mojada, iTAC actúa antes de que sientas el problema."</div>
+      </div>
+    </div>
+    <div class="tech-block" onclick="toggleTech(this)">
+      <div class="tech-header"><div class="tech-tag teal">TODOS LOS MODELOS</div><div class="tech-title">Batería Blade LFP + CTB/CTP</div><div class="tech-arrow">▼</div></div>
+      <div class="tech-body">
+        <div class="tech-tagline">La batería más segura del mundo — química LFP sin cobalto</div>
+        <div class="tech-desc">Química LFP (Litio-Hierro-Fosfato) — no produce reacciones térmicas en cadena, no se incendia al recibir daño. Celdas en forma de "cuchillas" integradas al chasis (<strong>CTP — Cell to Pack</strong>), ahorrando 50% de espacio. En Seal y Sealion 7: tecnología <strong>CTB (Cell to Body)</strong> con rigidez torsional de <strong>40,500 Nm/°</strong> — el doble de autos convencionales.</div>
+        <div class="tech-modes">
+          <div class="tech-mode"><div class="tech-mode-title">Test del clavo</div><div class="tech-mode-text">Se perfora con varilla de acero. Batería convencional: incendio. Blade: temperatura estable, sin humo, sin fuego.</div></div>
+          <div class="tech-mode"><div class="tech-mode-title">Durabilidad LFP</div><div class="tech-mode-text">Conserva 80-90% capacidad tras 10 años. NMC de competidores baja a 70-75% en el mismo período.</div></div>
+          <div class="tech-mode"><div class="tech-mode-title">Certificación IP67</div><div class="tech-mode-text">Protección total contra agua y polvo. Test de aplastamiento sin deformación térmica.</div></div>
+          <div class="tech-mode"><div class="tech-mode-title">Carga rápida</div><div class="tech-mode-text">30→80% en 18-30 min según modelo. Gestión térmica permite ciclos frecuentes sin degradar.</div></div>
+        </div>
+        <div class="tech-pills">
+          <div class="tech-pill hi">IP67 agua y polvo</div><div class="tech-pill hi">8 años / 200,000 km garantía</div>
+          <div class="tech-pill hi">Sin incendio al perforar</div><div class="tech-pill info">LFP sin cobalto — más estable y duradera</div>
+        </div>
+        <div class="tech-vs"><strong>Argumento de ventas:</strong> "BYD desarrolló esta batería durante 20 años — antes de hacer autos, fabricaban baterías para Sony, Nokia y Apple. Muéstrale el video del test del clavo en YouTube: 2 minutos que explican por qué BYD es tecnológicamente diferente a cualquier competidor."</div>
+      </div>
+    </div>
+    <div class="tech-block" onclick="toggleTech(this)">
+      <div class="tech-header"><div class="tech-tag gold">EV PREMIUM</div><div class="tech-title">e-Platform 3.0 · Sistema 8-en-1</div><div class="tech-arrow">▼</div></div>
+      <div class="tech-body">
+        <div class="tech-tagline">La arquitectura que hace posible la integración vertical de BYD</div>
+        <div class="tech-desc">Integra en un solo bloque <strong>8 componentes</strong>: VCU, BMS, MCU, PDU, controlador DC-DC, cargador a bordo, motor de tracción y transmisión. <strong>El primero del mundo en producción masiva.</strong> El motor eléctrico opera al <strong>97% de eficiencia</strong> — un motor de gasolina opera entre 30-43%.</div>
+        <div class="tech-modes">
+          <div class="tech-mode"><div class="tech-mode-title">Motor 97% eficiente</div><div class="tech-mode-text">Un motor gasolina desperdicia 57-70% en calor. El eléctrico BYD desperdicia menos del 3%. Más autonomía real.</div></div>
+          <div class="tech-mode"><div class="tech-mode-title">Suspensión FSD</div><div class="tech-mode-text">Amortiguadores de frecuencia sensible en Seal, Sealion 7 y Atto 8. Suave en impactos pequeños, firme en grandes.</div></div>
+          <div class="tech-mode"><div class="tech-mode-title">Actualizaciones OTA</div><div class="tech-mode-text">Software actualizable por Wi-Fi. BYD agrega funciones nuevas sin visitar la agencia, como un smartphone.</div></div>
+          <div class="tech-mode"><div class="tech-mode-title">V2L — Vehicle to Load</div><div class="tech-mode-text">El auto alimenta dispositivos externos. Shark: herramientas de campo. Song Plus, M9, Atto 8: emergencias y acampar.</div></div>
+        </div>
+        <div class="tech-pills">
+          <div class="tech-pill hi">97% eficiencia motor eléctrico</div><div class="tech-pill hi">Sistema 8-en-1 único mundial</div>
+          <div class="tech-pill hi">Carga DC hasta 150 kW</div><div class="tech-pill info">V2L en Shark, Song Plus, Atto 8, M9</div>
+        </div>
+        <div class="tech-vs"><strong>Argumento de ventas:</strong> "BYD diseña y fabrica internamente: baterías, motores, chips y software. Sin depender de terceros. Por eso el Seal a $799k compite de tú a tú con el Tesla Model 3 de $1.2M+. No compran tecnología — la inventan."</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="sec-title">Manejo de objeciones</div>
+  <div class="obj-grid">
+    <div class="obj-card" onclick="toggleObj(this)"><div class="obj-q"><div class="obj-icon">?</div><div class="obj-qt">"Es marca china, no será confiable…"</div><div class="obj-arrow">▼</div></div><div class="obj-body"><div class="obj-ans">BYD es el <strong>fabricante #1 de vehículos eléctricos del mundo</strong>, superando a Tesla en ventas desde 2023. Tiene 30+ años fabricando baterías para Sony, Nokia y Apple antes de hacer autos. Sus <strong>baterías Blade LFP superan el test de la varilla</strong> sin incendiarse.<br><br>Garantía oficial en México: <strong>8 años / 200,000 km batería · 6 años / 150,000 km vehículo · 8 años / 150,000 km sistema de alto voltaje.</strong></div><div class="obj-tip">Tip: Muestra el video del test de la batería Blade. Pregunta: "¿Conoce alguna marca en México que ofrezca 8 años de garantía en batería?"</div></div></div>
+    <div class="obj-card" onclick="toggleObj(this)"><div class="obj-q"><div class="obj-icon">?</div><div class="obj-qt">"¿Y si se me acaba la batería en carretera?"</div><div class="obj-arrow">▼</div></div><div class="obj-body"><div class="obj-ans">Para los <strong>PHEV</strong> (King, Yuan Pro DM-i, Song Pro, Song Plus, Shark, Atto 8, M9) esto no aplica: tienen motor de gasolina de respaldo. Llenas en cualquier gasolinera. El King hace <strong>25.6 km/L en modo híbrido</strong>.<br><br>Para los <strong>EV puros</strong>: Seal tiene 460–520 km, Sealion 7 tiene 456 km, Yuan Plus 480 km (todos datos oficiales WLTC/NEDC). La mayoría de usuarios carga en casa por las noches.</div><div class="obj-tip">Tip: "¿Cuántos km hace al día? El 95% de conductores en CDMX hacen menos de 80 km/día. Con BYD PHEV, nunca necesita gasolina de lunes a viernes si carga en casa."</div></div></div>
+    <div class="obj-card" onclick="toggleObj(this)"><div class="obj-q"><div class="obj-icon">?</div><div class="obj-qt">"Es muy caro comparado con un auto normal…"</div><div class="obj-arrow">▼</div></div><div class="obj-body"><div class="obj-ans">El precio de compra es solo parte del costo total. Con BYD:<br><br>• <strong>Ahorra $2,700–$2,900/mes</strong> en combustible vs. gasolina<br>• <strong>Sin verificación vehicular</strong> — placas verdes<br>• <strong>Circulación libre</strong> todos los días, incluso contingencias<br>• <strong>Mantenimiento ~40% más barato</strong>: sin aceite, sin bujías, sin banda de distribución<br>• Posible <strong>tarifa CFE nocturna</strong> para carga económica</div><div class="obj-tip">Tip: "En 5 años ahorra $162,000 solo en gasolina. El BYD se paga solo. ¿Le muestro el cálculo detallado para su perfil de manejo?"</div></div></div>
+    <div class="obj-card" onclick="toggleObj(this)"><div class="obj-q"><div class="obj-icon">?</div><div class="obj-qt">"¿Dónde lo cargo? No tengo cargador en casa"</div><div class="obj-arrow">▼</div></div><div class="obj-body"><div class="obj-ans">BYD incluye <strong>cargador de emergencia 110V y cargador de pared 7 kW en el auto</strong>. Cualquier contacto 110V puede cargar.<br><br>Instalación Wallbox en casa: <strong>$3,000 a $8,000 MXN</strong> una sola vez. PHEV: batería pequeña, carga en 2–4 horas con 220V.<br><br>Puntos públicos: Walmart, OXXO Gas, ChargePoint, Volta, hospitales, centros comerciales.</div><div class="obj-tip">Tip: "¿Tiene contacto 110V en su estacionamiento? Perfecto, ya puede cargar. Muchos clientes simplemente cargan de noche y salen con batería llena cada mañana."</div></div></div>
+    <div class="obj-card" onclick="toggleObj(this)"><div class="obj-q"><div class="obj-icon">?</div><div class="obj-qt">"Prefiero Toyota o Nissan, son más confiables"</div><div class="obj-arrow">▼</div></div><div class="obj-body"><div class="obj-ans">Toyota y Nissan son marcas probadas — pero en electrificados enchufables, <strong>BYD lleva la delantera tecnológica</strong>.<br><br>Comparación directa: <strong>BYD King DM-i $499,800</strong> vs. Toyota Corolla HEV $504,700 — precio similar, pero el BYD es enchufable con 50 km EV, 258 hp vs. 121 hp del Corolla, pantalla 15.6" giratoria vs. 8" de Toyota. El Corolla HEV NO se puede recargar.<br><br><strong>Garantía BYD batería: 8 años / 200,000 km.</strong> Toyota no ofrece garantía específica de batería de alto voltaje en México.</div><div class="obj-tip">Tip: "Hace 20 años la gente decía lo mismo de Toyota vs. americanos. Hoy BYD es #1 mundial en electrificados. ¿Le parece si comparamos spec a spec en la pantalla?"</div></div></div>
+    <div class="obj-card" onclick="toggleObj(this)"><div class="obj-q"><div class="obj-icon">?</div><div class="obj-qt">"¿Qué pasa si la batería se daña? ¿Cuánto cuesta?"</div><div class="obj-arrow">▼</div></div><div class="obj-body"><div class="obj-ans">La <strong>batería Blade LFP es la más segura y durable del mercado</strong>. La química LFP no sufre degradación severa como baterías NMC de la competencia.<br><br>Garantía oficial México: <strong>8 años o 200,000 km</strong>, cubre si baja del 70% de capacidad. Baterías LFP conservan 80-90% tras 10 años de uso.<br><br>Fuera de garantía, el costo baja año con año: baterías de litio cuestan 80% menos que en 2015 y la tendencia continúa.</div><div class="obj-tip">Tip: Menciona taxis BYD en China con 500,000+ km sin reemplazar batería. La tecnología está probada en millones de unidades en el mundo real.</div></div></div>
+    <div class="obj-card" onclick="toggleObj(this)"><div class="obj-q"><div class="obj-icon">?</div><div class="obj-qt">"¿Y el servicio mecánico? ¿Dónde lo reparo?"</div><div class="obj-arrow">▼</div></div><div class="obj-body"><div class="obj-ans">BYD tiene <strong>red de distribuidores y talleres autorizados</strong> en las principales ciudades de México, en constante crecimiento.<br><br>Ventaja real: los EV y PHEV BYD tienen <strong>muchos menos puntos de falla</strong>. Sin aceite, sin bujías, sin embrague en EV, frenos regenerativos que duran el doble. Servicios más baratos y menos frecuentes. El DM-i opera mayormente en modo eléctrico — el motor de gasolina trabaja poco y dura más.</div><div class="obj-tip">Tip: "El costo de mantenimiento a 100,000 km de un BYD EV es aproximadamente 40% del de un auto convencional. Le doy la lista de centros de servicio autorizados en su zona."</div></div></div>
+    <div class="obj-card" onclick="toggleObj(this)"><div class="obj-q"><div class="obj-icon">?</div><div class="obj-qt">"No me convence el diseño"</div><div class="obj-arrow">▼</div></div><div class="obj-body"><div class="obj-ans">BYD trabaja con <strong>Wolfgang Egger</strong>, ex-diseñador jefe de Audi y Alfa Romeo, desde 2016. Toda la gama actual fue diseñada bajo su dirección: líneas "Ocean" (Dolphin, Seal, Sealion) y "Dynasty" (Han, Tang, King, M9).<br><br>La tecnología interior impresiona: <strong>pantallas giratorias de hasta 15.6"</strong>, head-up display W-HUD, tablero digital LCD, sonido Dynaudio hasta 21 bocinas, asientos de cuero en versiones superiores. El interior supera ampliamente a Toyota, Nissan y MG en el mismo rango de precio.</div><div class="obj-tip">Tip: Invite al cliente a sentarse adentro — encienda la pantalla giratoria, active Hi BYD voz. La experiencia del interior vende más que cualquier argumento de precio.</div></div></div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="sec-title">Ventajas exclusivas en México</div>
+  <div class="benefits-grid">
+    <div class="ben-card"><div class="ben-title">Placas verdes</div><div class="ben-text">Exención de verificación. Sin "Hoy No Circula", incluso en contingencias en CDMX, ZMG y otras ciudades.</div></div>
+    <div class="ben-card"><div class="ben-title">Carga en casa</div><div class="ben-text">Cargador 110V + cargador pared 7 kW incluidos. Instala Wallbox desde $3,000 MXN. Carga como el celular.</div></div>
+    <div class="ben-card"><div class="ben-title">Garantía completa</div><div class="ben-text">8 años/200k km batería · 6 años/150k km vehículo · 8 años/150k km sistema de alto voltaje.</div></div>
+    <div class="ben-card"><div class="ben-title">Ahorro real</div><div class="ben-text">Hasta $34,800/año en gasolina. Mantenimiento ~40% más barato. El BYD se paga solo en 3–5 años.</div></div>
+    <div class="ben-card"><div class="ben-title">Tecnología premium</div><div class="ben-text">Pantalla giratoria, Android Auto/CarPlay, W-HUD, Hi BYD voz, Dynaudio. Incluido en toda la gama.</div></div>
+    <div class="ben-card"><div class="ben-title">Liderazgo mundial</div><div class="ben-text">#1 vendedor de electrificados en el mundo desde 2023. Más de 7.7 millones de DM-i vendidos globalmente.</div></div>
+  </div>
+</div>
+
+<div class="footer-note">Datos extraídos de fichas técnicas oficiales byd.com/mx · Especificaciones 2025–2026 · Precios MSRP incluyen IVA · Sujeto a cambios sin previo aviso · Siempre verifica con tu Distribuidor Autorizado BYD</div>
+
+</div>
+
+<script>
+const D={
+'dolphin-mini':{name:'Dolphin Mini',sub:'Hatchback 100% EV · Ocean Series · 5 asientos · Ficha: mayo 2025',price:'$358,800 MXN',badge:'100% EV',bc:'pill-ev',specs:[['Autonomía EV (NEDC)','300 km (base) / 380 km (Plus)'],['Potencia motor','55 kW (74 hp) · 135 N·m'],['Velocidad máxima','130 km/h'],['Batería Blade LFP','30.08 kWh (base) / 38.8 kWh (Plus)'],['Carga DC 30→80%','~30 min · 30 kW base / 40 kW Plus'],['Carga AC','7 kW estándar'],['Consumo energía','10 kWh/100 km NEDC (ambas versiones)'],['Bolsas de aire','4 (base) / 6 (Plus)'],['Pantalla','10.1" giratoria · Hi BYD · CarPlay/Android Auto'],['Garantía batería','8 años / 200,000 km'],['Garantía vehículo','6 años / 150,000 km']],pitch:'Pitch: El EV más accesible de México. Consumo 10 kWh/100 km ≈ $15/día con CFE. 5 asientos. Circula libre todos los días, sin verificación, sin gasolina. Ideal como primer EV o segundo auto familiar.'},
+'dolphin':{name:'Dolphin GS',sub:'Hatchback 100% EV · Ocean Series · 5 asientos · Ficha: oct 2024',price:'$535,990 MXN',badge:'100% EV',bc:'pill-ev',specs:[['Autonomía EV (NEDC)','405 km'],['Potencia motor','~70 kW (~94 hp) · 180 N·m'],['Batería Blade LFP','44.9 kWh'],['Carga DC 30→80%','~30 min (60 kW)'],['Carga AC','7 kW'],['Cajuela','345 L'],['Pantalla','12.8" giratoria táctil · Hi BYD'],['Bolsas de aire','6'],['Garantía batería','8 años / 200,000 km'],['Garantía vehículo','6 años / 150,000 km']],pitch:'Pitch: 405 km NEDC, pantalla giratoria 12.8", 6 bolsas de aire. Una sola versión en México: GS. Vs. VW Golf o Mazda 3: mismo segmento, 100% eléctrico. Ahorro +$2,500/mes vs. gasolina.'},
+'king':{name:'King DM-i',sub:'Sedán PHEV · Dynasty Series · 5 asientos · Ficha: julio 2025',price:'$499,800 MXN',badge:'PHEV',bc:'pill-phev',specs:[['Autonomía EV (NEDC)','50 km (100% eléctrico)'],['Autonomía combinada (NEDC)','1,175 km (batería + tanque)'],['Consumo modo híbrido','25.6 km/L (NEDC)'],['Motor gasolina','1.5L'],['Motor eléctrico','132 kW · 316 N·m'],['Batería Blade LFP','8.3 kWh'],['Carga AC','3.3 kW'],['Pantalla','12.8" giratoria · Hi BYD'],['Garantía batería','8 años / 200,000 km'],['Garantía vehículo','6 años / 150,000 km']],pitch:'Pitch: Rival directo del Toyota Prius ($501k): mismo precio pero PHEV enchufable. 50 km sin gasolina, luego 25.6 km/L en modo híbrido. Autonomía total 1,175 km. Batería Blade Ultra Segura Híbrida.'},
+'yuan-pro':{name:'Yuan Pro EV',sub:'SUV subcompacto 100% EV · Ocean Series · 5 asientos · Ficha: feb 2026',price:'$579,800 MXN',badge:'100% EV',bc:'pill-ev',specs:[['Autonomía EV (NEDC)','380 km'],['Potencia motor','130 kW · 290 N·m'],['0-100 km/h','7.9 seg'],['Batería Blade LFP','45 kWh'],['Carga DC','65 kW'],['Carga AC','7 kW (Tipo 1/J1772)'],['Cajuela','265 L / 1,210 L abatido'],['Tecnología','CTB · e-Platform 3.0'],['Pantalla','12.8" giratoria · Hi BYD'],['Garantía batería','8 años / 200,000 km'],['Garantía vehículo','6 años / 150,000 km']],pitch:'Pitch: SUV eléctrico con 380 km NEDC y tecnología CTB (Cell to Body). 0-100 en 7.9 seg. Supera al MG ZS EV en autonomía y tecnología. Plataforma e-Platform 3.0.'},
+'yuan-pro-dmi':{name:'Yuan Pro DM-i',sub:'SUV subcompacto PHEV · El SUV PHEV más accesible · 5 asientos · Ficha: abr 2026',price:'~$499,999 MXN',badge:'PHEV',bc:'pill-phev',specs:[['Autonomía EV (NEDC)','45 km (100% eléctrico)'],['Autonomía combinada (NEDC)','1,045 km (batería + tanque)'],['Consumo modo híbrido','24 km/L (NEDC)'],['Motor gasolina','1.5L · 72 kW · 122 N·m'],['Motor eléctrico','145 kW · 300 N·m'],['Potencia combinada','~217 hp'],['Batería Blade LFP','7.85 kWh'],['Carga AC','3.3 kW'],['0-100 km/h','9.1 seg'],['Velocidad máxima','180 km/h'],['ADAS','Nivel 2 incluido'],['Pantalla','12.8" · Hi BYD · CarPlay/Android Auto'],['Garantía batería','8 años / 200,000 km'],['Garantía vehículo','6 años / 150,000 km']],pitch:'Pitch: El SUV PHEV más accesible del mercado. 45 km eléctricos para trayectos urbanos sin gasolina. 1,045 km autonomía total. ADAS Nivel 2 incluido. Rival del Toyota RAV4 HEV pero enchufable y más económico.'},
+'song-pro':{name:'Song Pro DM-i',sub:'SUV PHEV · Dynasty Series · 5 asientos · Ficha: nov 2025',price:'$599,880 MXN',badge:'PHEV',bc:'pill-phev',specs:[['Autonomía EV (NEDC)','71 km (100% eléctrico)'],['Autonomía combinada (NEDC)','1,001 km (batería + tanque)'],['Consumo modo híbrido','22.7 km/L (NEDC)'],['Motor gasolina','78 kW · 130 N·m'],['Motor eléctrico','145 kW · 300 N·m'],['Potencia combinada','220 hp'],['Batería Blade LFP','12.9 kWh'],['Carga AC','6.6 kW'],['0-100 km/h','8.3 seg'],['Pantalla','12.8" giratoria · Hi BYD'],['V2L','Carga reversible VTOL incluida'],['Garantía batería','8 años / 200,000 km'],['Garantía vehículo','6 años / 150,000 km']],pitch:'Pitch: 71 km EV cubren toda la semana de CDMX sin gasolina. 1,001 km autonomía total. V2L incluido. Vs. Toyota RAV4 HEV ($811k): más tecnología, más autonomía EV, $211k menos de precio.'},
+'yuan-plus':{name:'Yuan Plus EV',sub:'SUV compacto 100% EV · Ocean Series · 5 asientos',price:'$649,800 MXN',badge:'100% EV',bc:'pill-ev',specs:[['Autonomía EV (NEDC)','480 km'],['Potencia motor','150 kW (201 hp) · 310 N·m'],['Batería Blade LFP','60.5 kWh'],['Carga DC','88 kW'],['Carga AC','7 kW'],['Pantalla','12.8" giratoria · Hi BYD'],['Plataforma','e-Platform 3.0'],['Garantía batería','8 años / 200,000 km'],['Garantía vehículo','6 años / 150,000 km']],pitch:'Pitch: 480 km NEDC. Supera al MG ZS EV en potencia (201 hp vs. 174 hp) y autonomía (480 vs. 350 km) por precio similar. El SUV eléctrico compacto más equilibrado del mercado.'},
+'song-plus':{name:'Song Plus DM-i GS',sub:'SUV mediano PHEV · Ocean Series · 5 asientos · Ficha: mayo 2025',price:'$778,800 MXN',badge:'PHEV',bc:'pill-phev',specs:[['Autonomía EV (NEDC)','105 km (100% eléctrico)'],['Autonomía combinada (NEDC)','1,105 km (batería + tanque)'],['Consumo modo híbrido','19.6 km/L · 5.1 L/100km (NEDC)'],['Motor eléctrico (frente)','150 kW · 300 N·m'],['Motor térmico','1.5T · 102 kW · 220 N·m'],['Potencia combinada','236 hp'],['Velocidad máxima','180 km/h'],['0-100 km/h','8.3 seg'],['Batería Blade LFP','18.3 kWh'],['Carga AC','6.6 kW'],['Pantalla','15.6" giratoria + W-HUD'],['V2L','Carga reversible VTOL 220V incluida'],['Bolsas de aire','6'],['Garantía batería','8 años / 200,000 km'],['Garantía vehículo','6 años / 150,000 km']],pitch:'Pitch: 105 km EV — mayor autonomía eléctrica de cualquier PHEV en su segmento en México. 1,105 km autonomía total. 5.1 L/100km en modo híbrido. HUD, 15.6" giratoria, 6 bolsas de aire, V2L. Vs. Ford Escape ($799k): más autonomía EV, más tecnología.'},
+'seal':{name:'Seal EV',sub:'Sedán 100% EV · Ocean Series · 5 asientos · Ficha: oct 2024',price:'$799,800 MXN',badge:'100% EV',bc:'pill-ev',specs:[['Autonomía WLTC RWD','460 km'],['Autonomía WLTC AWD','520 km'],['Motor RWD','150 kW trasero · 310 N·m'],['Motor AWD frente','160 kW · 310 N·m'],['Motor AWD trasero','230 kW · 360 N·m'],['Potencia combinada AWD','390 kW (530 hp) · 670 N·m'],['0-100 km/h','7.5 seg (RWD) / 3.8 seg (AWD)'],['Velocidad máxima','180 km/h'],['Batería Blade LFP','61.44 kWh (RWD) / 82.56 kWh (AWD)'],['Carga DC 30→80%','≤30 min · 110 kW (RWD) / 150 kW (AWD)'],['Tecnologías','CTB · iTAC solo AWD · Suspensión FSD'],['Pantalla','15.6" giratoria · Dynaudio 12 bocinas (AWD)'],['Consumo energía WLTC','15.4 kWh/100km (RWD) / 18.2 kWh/100km (AWD)'],['Garantía batería','8 años / 200,000 km'],['Garantía vehículo','6 años / 150,000 km']],pitch:'Pitch: Tesla Model 3 cuesta $1.2M+. El Seal AWD: 520 km WLTC, 530 hp, 0-100 en 3.8 seg — a $799,800. CTB da rigidez de 40,500 Nm/° (doble de convencionales). iTAC exclusivo en versión AWD. Dynaudio 12 bocinas en AWD.'},
+'sealion7':{name:'Sealion 7 EV AWD',sub:'SUV mediano 100% EV · Ocean Series · 5 asientos · Ficha: abr 2025',price:'$849,800 MXN',badge:'100% EV',bc:'pill-ev',specs:[['Autonomía EV (WLTC)','456 km'],['Motor frente','160 kW · 310 N·m'],['Motor trasero','230 kW · 380 N·m'],['Potencia combinada AWD','~390 kW (~522 hp)'],['0-100 km/h','4.5 seg'],['Velocidad máxima','215 km/h'],['Batería Blade LFP','82.5 kWh'],['Carga DC 30→80%','≤30 min (150 kW)'],['Carga AC','7 kW'],['Maletero','58 L (frontal) + 500 L (trasero)'],['Suspensión','Doble horquilla + multibrazo + FSD'],['Tecnologías','CTB · iTAC · DP-EPS'],['Pantalla','15.6" giratoria · Dynaudio 12 bocinas'],['Garantía batería','8 años / 200,000 km'],['Garantía vehículo','6 años / 150,000 km']],pitch:'Pitch: 456 km WLTC, ~522 hp, 4.5 seg, 215 km/h. Suspensión doble horquilla con amortiguadores FSD. Vs. Hyundai Tucson HEV ($873k) o Kia Sportage Híbrida ($872k): mismo precio, 100% eléctrico, más rápido y más tecnológico.'},
+'shark':{name:'Shark PHEV GL/GS',sub:'Pick-up PHEV · Sistema DMO Off-Road · 5 asientos · Ficha: abr 2026',price:'$1,099,800 MXN',badge:'PHEV',bc:'pill-phev',specs:[['Autonomía EV (NEDC)','100 km (100% eléctrico)'],['Autonomía combinada (NEDC)','840 km (batería + tanque)'],['Consumo modo híbrido (NEDC)','7.5 L/100km'],['Motor eléctrico delantero','170 kW · 310 N·m'],['Motor eléctrico trasero','150 kW · 340 N·m'],['Sistema transmisión','EHS · AWD inteligente'],['0-100 km/h','5.7 seg'],['Velocidad máxima','160 km/h'],['Batería Blade LFP','29.58 kWh'],['Carga DC 30→80%','20 minutos (40 kW)'],['Capacidad de arrastre','2,500 kg'],['Masa máxima bruta','3,500 kg'],['Batea','1,520 × 1,500 × 517 mm'],['V2L','Carga reversible VTOL incluida'],['Modos off-road','Lodo · Arena · Nieve'],['Garantía batería','8 años / 200,000 km'],['Garantía vehículo','6 años / 150,000 km']],pitch:'Pitch: La única pick-up PHEV en México. 100 km EV para la semana sin gasolina. Carga 30→80% en solo 20 min. Arrastra 2,500 kg. AWD inteligente con modos lodo, arena, nieve. V2L para herramientas en campo. Sistema DMO off-road exclusivo de BYD.'},
+'atto8':{name:'Atto 8 DM-p',sub:'SUV grande PHEV · 7 asientos (2+2+3) · AWD · Ficha: sep 2025',price:'Consultar distribuidor',badge:'PHEV',bc:'pill-phev',specs:[['Autonomía EV (NEDC)','152 km (100% eléctrico)'],['Autonomía combinada (NEDC)','1,030 km (batería + tanque)'],['0-100 km/h','4.9 seg'],['Motor eléctrico frente','200 kW · 315 N·m'],['Motor eléctrico trasero','200 kW · 360 N·m'],['Motor gasolina','110 kW'],['Batería Blade','35.6 kWh'],['Carga DC 30→80%','20 minutos'],['Velocidad máxima','200 km/h'],['Asientos','7 plazas · 3 filas (2+2+3)'],['Tanque combustible','60 L'],['Suspensión delantera','DiSus-C (amortiguación inteligente)'],['Suspensión trasera','DiSus-C · Multi-link'],['Audio','DiSound 21 altavoces · 1,500W'],['V2L','Carga reversible VTOL incluida'],['Garantía batería','8 años / 200,000 km'],['Garantía vehículo','6 años / 150,000 km']],pitch:'Pitch: El SUV familiar de 7 plazas más tecnológico de BYD México. 152 km EV — cubre toda la semana con familia completa sin gasolina. Suspensión DiSus-C inteligente para confort máximo. Audio DiSound 21 bocinas 1,500W. AWD de alto rendimiento en 4.9 seg.'},
+'m9':{name:'BYD M9',sub:'Minivan PHEV · 7 asientos (2+2+3) · Premium familiar · Ficha: jun 2025',price:'Consultar distribuidor',badge:'PHEV',bc:'pill-phev',specs:[['Autonomía EV (NEDC)','95 km (100% eléctrico)'],['Autonomía combinada (NEDC)','945 km (batería + tanque)'],['Consumo modo híbrido (NEDC)','17.8 km/L'],['Carga DC 30→80%','18 minutos'],['Batería Blade','20.39 kWh'],['0-100 km/h','8.1 seg'],['Motor combustión','115 kW'],['Motor eléctrico frente','200 kW · 315 N·m'],['Velocidad máxima','190 km/h'],['Asientos','7 plazas · 3 filas (2+2+3)'],['Cajuela','455 / 570 / 2,036 L (3ª fila abatida)'],['Puertas traseras','Corredizas de doble potencia'],['Tanque combustible','50 L'],['Pantalla','15.6" · 12.3" LCD completo'],['Garantía batería','8 años / 200,000 km'],['Garantía vehículo','6 años / 150,000 km']],pitch:'Pitch: La minivan PHEV más avanzada del mercado. 95 km EV para traslados escolares y urbanos sin gasolina. Carga 30→80% en solo 18 min — la más rápida de la gama PHEV BYD. Puertas corredizas de doble potencia. 2,036 L de cajuela con 3ª fila abatida. El transporte familiar premium definitivo.'}
+};
+
+function showDetail(id,card){
+  document.querySelectorAll('.model-card').forEach(c=>c.classList.remove('selected'));
+  const panel=document.getElementById('detailPanel');
+  const data=D[id];if(!data)return;
+  const was=panel.classList.contains('show')&&panel.dataset.current===id;
+  if(was){panel.classList.remove('show');panel.dataset.current='';return;}
+  card.classList.add('selected');panel.dataset.current=id;
+  document.getElementById('dp-name').textContent=data.name;
+  document.getElementById('dp-sub').textContent=data.sub;
+  document.getElementById('dp-price').textContent=data.price;
+  const b=document.getElementById('dp-badge');b.textContent=data.badge;b.className='pill '+data.bc;
+  document.getElementById('dp-specs').innerHTML=data.specs.map(s=>`<div class="dp-item"><div class="dp-item-l">${s[0]}</div><div class="dp-item-v">${s[1]}</div></div>`).join('');
+  document.getElementById('dp-pitch').innerHTML=data.pitch;
+  panel.classList.add('show');panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function filterModels(type,btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');
+  document.querySelectorAll('.model-card').forEach(c=>{c.style.display=(type==='all'||c.dataset.type===type)?'':'none';});
+  document.getElementById('detailPanel').classList.remove('show');
+  document.querySelectorAll('.model-card').forEach(c=>c.classList.remove('selected'));
+}
+function showComp(type,btn){
+  btn.parentElement.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');
+  ['phev','ev','hev'].forEach(t=>{const el=document.getElementById('comp-'+t);if(el)el.style.display=(t===type)?'':'none';});
+}
+function toggleObj(card){card.classList.toggle('open')}
+function toggleTech(block){block.classList.toggle('open')}
+</script>
+</body>
+</html>
